@@ -6,9 +6,9 @@ function TodoList() {
   const [todoList, setTodoList] = useState([]);
 
   const addTodo = todo => {
-    // if (!todo.text || /^\s*$/.test(todo.text)) {
-    //   return;
-    // }
+    if (!todo.text || /^\s*$/.test(todo.text)) {
+      return;
+    }
     const newTodoList = [todo, ...todoList];
 
     setTodoList(newTodoList);

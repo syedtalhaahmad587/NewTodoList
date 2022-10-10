@@ -11,6 +11,7 @@ const Todo = ({ todoList, completeTodo, removeTodo, updateTodo }) => {
  
   const submitUpdate = value => {
     updateTodo(edit.id, value);
+    console.log(updateTodo(edit.id, value));
     setEdit({
       id: null,
       value: ''
