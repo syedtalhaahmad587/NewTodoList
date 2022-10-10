@@ -18,15 +18,14 @@ const Todo = ({ todoList, completeTodo, removeTodo, updateTodo }) => {
     });
   };
 
-  if (edit.id) {
-    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
-  }   
-
   return todoList.map((todo, index) => (
+    <>
+
+    {!edit.id ?
     <div
-      className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+       className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
       key={index}>
-      {!todo.edit ?
+      {!todo.edit &&
         <>
         <div key={todo.id} onClick={() => completeTodo(todo.id)}>
         {todo.text}
@@ -42,20 +41,10 @@ const Todo = ({ todoList, completeTodo, removeTodo, updateTodo }) => {
         />
       </div>
       </>
-      : <>
-          <input
-            placeholder='Update your item'
-            // value={input}
-            // onChange={handleChange}
-            name='text'
-            className='todo-input edit'
-          />
-          <button className='todo-button edit'>
-            Update
-          </button>
-        </>
       }
     </div>
+   : <TodoForm edit={edit} onSubmit={submitUpdate} /> }
+    </>
   ));
 };
 
